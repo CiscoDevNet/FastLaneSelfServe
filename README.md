@@ -32,6 +32,17 @@ tshark -a duration:5 -i en0 -e frame.number -e wlan.qos -e wlan.qos.priority -e 
 - Websocket and t-shark scripts coming soon...
 
 
+## Debug
+
+- To restart, please run
+
+```
+docker-compose down
+docker-compose rm
+docker-compose up -d
+```
+
+
 ## Docker ELK stack
 
 [![Join the chat at https://gitter.im/deviantony/docker-elk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/deviantony/docker-elk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
