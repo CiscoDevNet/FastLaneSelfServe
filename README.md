@@ -38,7 +38,6 @@ tshark -a duration:5 -i en0 -e frame.number -e wlan.qos -e wlan.qos.priority -e 
 
 ```
 docker-compose down
-docker-compose rm
 docker-compose up -d
 ```
 
