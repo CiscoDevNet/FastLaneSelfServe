@@ -38,7 +38,7 @@ filebeat.prospectors:
 # Multiple outputs may be used.
 
 output.elasticsearch:
-  hosts: ["${ELHOST:localhost:9200}"]
+  hosts: ["${ELHOST:0.0.0.0:9200}"]
   template.name: "${ELTEMPLATE:fastlane}"
   template.path: "${ELTEMPLATE_PATH:/usr/share/filebeat/config/fastlane_elastic.template.json}"
   template.overwrite: false

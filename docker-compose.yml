@@ -1,7 +1,5 @@
 version: '2'
-
 services:
-
   elasticsearch:
     build: elasticsearch/
     volumes:
@@ -10,39 +8,7 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-    networks:
-      - elk
-
-  filebeat:
-    build: filebeat/
-    volumes:
-      - ./filebeat/config:/usr/share/filebeat/config
-      - ./tmp/tshark/data:/usr/share/filebeat/data 
-    environment:
-        ELHOST: elasticsearch:9200
-        FILEPATH: "/usr/share/filebeat/data/logs.data"
-        ELTEMPLATE: "fastlane"
-        ELTEMPLATE_PATH: "/usr/share/filebeat/config/fastlane_elastic.template.json"
-        ELPROTOCOL: "http"
-    networks:
-      - elk
-    depends_on:
-      - elasticsearch
-
-  logstash:
-    build: logstash/
-    volumes:
-      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
-      - ./logstash/pipeline:/usr/share/logstash/pipeline
-    ports:
-      - "5000:5000"
-    environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
-    networks:
-      - elk
-    depends_on:
-      - elasticsearch
+      - ES_JAVA_OPTS=-Xmx256m -Xms256m
 
   kibana:
     build: kibana/
@@ -50,11 +16,19 @@ services:
       - ./kibana/config/:/usr/share/kibana/config
     ports:
       - "5601:5601"
-    networks:
-      - elk
     depends_on:
       - elasticsearch
 
-networks:
-  elk:
-    driver: bridge
+  filebeat:
+    build: filebeat/
+    volumes:
+      - ./filebeat/config:/usr/share/filebeat/config
+      - ./tmp/tshark/data:/usr/share/filebeat/data 
+    environment:
+      - ELHOST=elasticsearch:9200
+      - FILEPATH=/usr/share/filebeat/data/logs.data
+      - ELTEMPLATE=fastlane
+      - ELTEMPLATE_PATH=/usr/share/filebeat/config/fastlane_elastic.template.json
+      - ELPROTOCOL=http
+    depends_on:
+      - elasticsearch
