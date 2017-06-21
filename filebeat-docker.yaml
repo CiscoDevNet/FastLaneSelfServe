@@ -1,0 +1,15 @@
+version: '2'
+services:
+  filebeat:
+    build: filebeat/
+    volumes:
+      - ./filebeat/config:/usr/share/filebeat/config
+      - ./tmp/tshark/data:/usr/share/filebeat/data 
+    ports:
+      - "9200:9200"
+    environment:
+      - ELHOST=10.0.0.171:9200
+      - FILEPATH=/usr/share/filebeat/data/logs.data
+      - ELTEMPLATE=fastlane
+      - ELTEMPLATE_PATH=/usr/share/filebeat/config/fastlane_elastic.template.json
+      - ELPROTOCOL=http

@@ -22,8 +22,9 @@ services:
   filebeat:
     build: filebeat/
     volumes:
-      - ./filebeat/config:/usr/share/filebeat/config
-      - ./tmp/tshark/data:/usr/share/filebeat/data 
+      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/config/filebeat.yml
+      - ./filebeat/config/fastlane_elastic.template.json:/usr/share/filebeat/config/fastlane_elastic.template.json
+      - /tmp/tshark/data/logs.data:/usr/share/filebeat/data/logs.data
     environment:
       - ELHOST=elasticsearch:9200
       - FILEPATH=/usr/share/filebeat/data/logs.data

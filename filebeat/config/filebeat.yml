@@ -15,7 +15,7 @@ filebeat.prospectors:
 
   # Paths that should be crawled and fetched. Glob based paths.
   paths:
-    - ${FILEPATH:/usr/share/filebeat/data/logs.data}
+    - /usr/share/filebeat/data/logs.data
     #- c:\programdata\elasticsearch\logs\*
 
   #exclude_lines: ["^DBG"]
@@ -38,20 +38,20 @@ filebeat.prospectors:
 # Multiple outputs may be used.
 
 output.elasticsearch:
-  hosts: ["${ELHOST:0.0.0.0:9200}"]
-  template.name: "${ELTEMPLATE:fastlane}"
-  template.path: "${ELTEMPLATE_PATH:/usr/share/filebeat/config/fastlane_elastic.template.json}"
+  hosts: ["elasticsearch:9200"]
+  template.name: "fastlane"
+  template.path: "/usr/share/filebeat/config/fastlane_elastic.template.json"
   template.overwrite: false
 
   # Optional protocol and basic auth credentials.
-  protocol: "${ELPROTOCOL:http}"
+  protocol: "http"
   #username: "elastic"
   #password: "changeme"
 
 #----------------------------- Logstash output --------------------------------
-output.logstash:
+#output.logstash:
   # The Logstash hosts
-  hosts: ["${LOGSTASH_HOST:localhost:5044}"]
+#  hosts: ["${LOGSTASH_HOST:localhost:5044}"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
