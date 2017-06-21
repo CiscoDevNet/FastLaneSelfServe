@@ -14,6 +14,22 @@ services:
     networks:
       - elk
 
+  filebeat:
+    build: filebeat/
+    volumes:
+      - ./filebeat/config:/usr/share/filebeat/config
+      - ./tmp/tshark/data:/usr/share/filebeat/data 
+    environment:
+        ELHOST: elasticsearch:9200
+        FILEPATH: "/usr/share/filebeat/data/logs.data"
+        ELTEMPLATE: "fastlane"
+        ELTEMPLATE_PATH: "/usr/share/filebeat/config/fastlane_elastic.template.json"
+        ELPROTOCOL: "http"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
   logstash:
     build: logstash/
     volumes:
@@ -40,6 +56,5 @@ services:
       - elasticsearch
 
 networks:
-
   elk:
     driver: bridge

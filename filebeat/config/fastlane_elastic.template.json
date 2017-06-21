@@ -1,0 +1,10 @@
+{
+      "template": "fastlane",
+       "mappings": {
+            "_default_": {
+                 "dynamic_date_formats" : [
+                      "yyyy-MM-dd HH:mm:SS"
+                   ]
+                }
+             }
+}

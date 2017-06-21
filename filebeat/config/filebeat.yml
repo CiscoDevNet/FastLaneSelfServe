@@ -1,0 +1,75 @@
+###################### Filebeat Configuration Example #########################
+
+# This file is an example configuration file highlighting only the most common
+# options. The filebeat.full.yml file from the same directory contains all the
+# supported options with more comments. You can use it as a reference.
+#
+# You can find the full configuration reference here:
+# https://www.elastic.co/guide/en/beats/filebeat/index.html
+
+#=========================== Filebeat prospectors =============================
+
+filebeat.prospectors:
+
+- input_type: log
+
+  # Paths that should be crawled and fetched. Glob based paths.
+  paths:
+    - ${FILEPATH:/usr/share/filebeat/data/logs.data}
+    #- c:\programdata\elasticsearch\logs\*
+
+  #exclude_lines: ["^DBG"]
+
+  #include_lines: ["^ERR", "^WARN"]
+
+  #exclude_files: [".gz$"]
+
+  #fields:
+  #  level: debug
+  #  review: 1
+
+
+#fields:
+#  env: staging
+
+#================================ Outputs =====================================
+
+# Configure what outputs to use when sending the data collected by the beat.
+# Multiple outputs may be used.
+
+output.elasticsearch:
+  hosts: ["${ELHOST:localhost:9200}"]
+  template.name: "${ELTEMPLATE:fastlane}"
+  template.path: "${ELTEMPLATE_PATH:/usr/share/filebeat/config/fastlane_elastic.template.json}"
+  template.overwrite: false
+
+  # Optional protocol and basic auth credentials.
+  protocol: "${ELPROTOCOL:http}"
+  #username: "elastic"
+  #password: "changeme"
+
+#----------------------------- Logstash output --------------------------------
+output.logstash:
+  # The Logstash hosts
+  hosts: ["${LOGSTASH_HOST:localhost:5044}"]
+
+  # Optional SSL. By default is off.
+  # List of root certificates for HTTPS server verifications
+  #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
+
+  # Certificate for SSL client authentication
+  #ssl.certificate: "/etc/pki/client/cert.pem"
+
+  # Client Certificate Key
+  #ssl.key: "/etc/pki/client/cert.key"
+
+#================================ Logging =====================================
+
+# Sets log level. The default log level is info.
+# Available log levels are: critical, error, warning, info, debug
+#logging.level: debug
+
+# At debug level, you can selectively enable logging only for some components.
+# To enable all selectors use ["*"]. Examples of other selectors are "beat",
+# "publish", "service".
+#logging.selectors: ["*"]
