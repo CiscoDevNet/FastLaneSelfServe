@@ -18,7 +18,7 @@ cd CLUS-Fastlane-Demo
 docker-compose up
 ```
 
-- Kibana: http://127.0.0.1:5601/app/kibana
+- Kibana: http://127.0.0.1:5601/app/kibana (This takes a while to come up. You don't need to wait for that!)
 - Elasticsearch API: http://0.0.0.0:9200
 
 - Install T-shark: https://www.wireshark.org/download.html
@@ -26,7 +26,7 @@ docker-compose up
 
 - Run tshark to generate traffic
 ```
-tshark -a duration:3 -i en0 -Tek > /tmp/tshark/data/logs.data
+tshark -a duration:5 -i en0 -e frame.number -e wlan.qos -e wlan.qos.priority -e ip.src -e ip.dst -e ip.dsfield.dscp -e ip.len -Tek > /tmp/tshark/data/logs.data
 ```
 
 - Websocket and t-shark scripts coming soon...
