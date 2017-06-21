@@ -1,4 +1,38 @@
-# Docker ELK stack
+# CLUS Fastlane Demo
+
+## Setup (mac-osx)
+
+- Install Docker : https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac
+- Install Docker-compose : https://docs.docker.com/compose/install/
+
+- Create log directory for tshark
+```
+mkdir /tmp/tshark/data
+touch /tmp/tshark/data/logs.data
+```
+
+- Run Stack services
+```
+git clone git@wwwin-github.cisco.com:DevNet/CLUS-Fastlane-Demo.git
+cd CLUS-Fastlane-Demo
+docker-compose up
+```
+
+- Kibana: http://127.0.0.1:5601/app/kibana
+- Elasticsearch API: http://0.0.0.0:9200
+
+- Install T-shark: https://www.wireshark.org/download.html
+(installing wireshark should automatically install tshark)
+
+- Run tshark to generate traffic
+```
+tshark -a duration:3 -i en0 -Tek > /tmp/tshark/data/logs.data
+```
+
+- Websocket and t-shark scripts coming soon...
+
+
+## Docker ELK stack
 
 [![Join the chat at https://gitter.im/deviantony/docker-elk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/deviantony/docker-elk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
