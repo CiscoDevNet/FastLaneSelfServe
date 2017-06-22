@@ -46,8 +46,17 @@ docker-compose up -d
 - EL API to get new entries
 
 ```
+//Simple Get request
 GET http://0.0.0.0:9200/fastlane/log/_search?_source=json.layers.ip_dsfield_dscp,json.timestamp
-curl -X GET 'http://0.0.0.0:9200/fastlane/log/_search?_source=json'
+
+//Get latest results
+curl -XGET 'localhost:9200/fastlane/log/_search?_source=json.layers.ip_dsfield_dscp,json.timestamp' -H 'Content-Type: application/json' -d'
+{
+    "sort" : [
+        {"json.timestamp.keyword" : {"order" : "desc"}}
+     ]
+}'
+
 ```
 
 ## Docker ELK stack
