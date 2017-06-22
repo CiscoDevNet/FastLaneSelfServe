@@ -44,9 +44,10 @@ output.elasticsearch:
   template.name: "fastlane"
   template.path: "/usr/share/filebeat/config/fastlane_elastic.template.json"
   template.overwrite: false
-
+  index: "fastlane"
   # Optional protocol and basic auth credentials.
   protocol: "http"
+  bulk_max_size: 5
   #username: "elastic"
   #password: "changeme"
 
