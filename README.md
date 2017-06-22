@@ -41,6 +41,11 @@ docker-compose down
 docker-compose up -d
 ```
 
+- EL API to get new entries
+
+```
+curl -X GET   'http://0.0.0.0:9200/fastlane/log/_search?_source=json'   -H 'content-type: application/json'
+```
 
 ## Docker ELK stack
 
