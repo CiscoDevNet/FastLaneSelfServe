@@ -20,13 +20,15 @@ docker-compose up
 
 - Kibana: http://127.0.0.1:5601/app/kibana (This takes a while to come up. You don't need to wait for that!)
 - Elasticsearch API: http://0.0.0.0:9200
+  - Index: "fastlane"
+  - docType: "log"
 
 - Install T-shark: https://www.wireshark.org/download.html
 (installing wireshark should automatically install tshark)
 
 - Run tshark to generate traffic
 ```
-tshark -a duration:5 -i en0 -e frame.number -e wlan.qos -e wlan.qos.priority -e ip.src -e ip.dst -e ip.dsfield.dscp -e ip.len -Tek > /tmp/tshark/data/logs.data
+tshark -a duration:500 -i en0 -e frame.number -e wlan.qos -e wlan.qos.priority -e ip.src -e ip.dst -e ip.dsfield.dscp -e ip.len -Tek > /tmp/tshark/data/logs.data
 ```
 
 - Websocket and t-shark scripts coming soon...
@@ -41,6 +43,21 @@ docker-compose down
 docker-compose up -d
 ```
 
+- EL API to get new entries
+
+```
+//Simple Get request
+GET http://0.0.0.0:9200/fastlane/log/_search?_source=json.layers.ip_dsfield_dscp,json.timestamp
+
+//Get latest results
+curl -XGET 'localhost:9200/fastlane/log/_search?_source=json.layers.ip_dsfield_dscp,json.timestamp' -H 'Content-Type: application/json' -d'
+{
+    "sort" : [
+        {"json.timestamp.keyword" : {"order" : "desc"}}
+     ]
+}'
+
+```
 
 ## Docker ELK stack
 
