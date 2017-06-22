@@ -20,6 +20,8 @@ docker-compose up
 
 - Kibana: http://127.0.0.1:5601/app/kibana (This takes a while to come up. You don't need to wait for that!)
 - Elasticsearch API: http://0.0.0.0:9200
+  - Index: "fastlane"
+  - docType: "log"
 
 - Install T-shark: https://www.wireshark.org/download.html
 (installing wireshark should automatically install tshark)
