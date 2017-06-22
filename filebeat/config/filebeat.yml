@@ -24,10 +24,12 @@ filebeat.prospectors:
 
   #exclude_files: [".gz$"]
 
-  #fields:
+  fields:
+    source: tshark_data
   #  level: debug
   #  review: 1
 
+  json.add_error_key: true
 
 #fields:
 #  env: staging
