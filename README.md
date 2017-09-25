@@ -15,10 +15,10 @@ touch /tmp/tshark/data/logs.data
 ```
 git clone git@wwwin-github.cisco.com:DevNet/CLUS-Fastlane-Demo.git
 cd CLUS-Fastlane-Demo
-docker-compose up
+docker-compose up -d
 ```
 
-- Go to 0.0.0.0:5000 for the demo
+- Go to http://0.0.0.0:5000 for the demo
 
 
 - Install T-shark: https://www.wireshark.org/download.html
