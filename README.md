@@ -29,6 +29,8 @@ cd CLUS-Fastlane-Demo
 docker-compose up -d
 ```
 
+**Tip: If you keep the system up for long, it might get slower because of huge amount of packet data. Restart the docker-compose once every 30mins - 1 hour for best experience.**
+
 - Run tshark to generate traffic
 
 Open a new tab, and run the tshark command to start the network capture. You can optionally provide the ```ip``` option to capture from a particular IP address.
