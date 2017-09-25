@@ -29,10 +29,6 @@ docker-compose up
 tshark -a duration:500 -i en0 -e frame.number -e wlan.qos -e wlan.qos.priority -e ip.src -e ip.dst -e ip.dsfield.dscp -e ip.len -Tek > /tmp/tshark/data/logs.data
 ```
 
-- **Kibana**: http://127.0.0.1:5601/app/kibana (This takes a while to come up. You don't need to wait for that!)
-- **Elasticsearch API**: http://0.0.0.0:9200
-  - **Index: "fastlane"**
-  - docType: "log"
 
 ## Debug
 
@@ -42,6 +38,11 @@ tshark -a duration:500 -i en0 -e frame.number -e wlan.qos -e wlan.qos.priority -
 docker-compose down
 docker-compose up -d
 ```
+
+- Kibana: http://127.0.0.1:5601/app/kibana (This takes a while to come up. You don't need to wait for that!)
+- Elasticsearch API: http://0.0.0.0:9200
+  - Index: "fastlane"
+  - docType: "log"
 
 ## Comcept
 
