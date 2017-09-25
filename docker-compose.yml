@@ -19,6 +19,13 @@ services:
     depends_on:
       - elasticsearch
 
+  visualizer:
+    image: containers.cisco.com/cloudification/fastlane-visualizer:deploy
+    ports:
+      - "5000:5000"
+    depends_on:
+      - elasticsearch
+
   filebeat:
     build: filebeat/
     volumes:
