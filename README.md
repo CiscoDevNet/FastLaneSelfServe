@@ -11,24 +11,35 @@ mkdir /tmp/tshark/data
 touch /tmp/tshark/data/logs.data
 ```
 
-- Run Stack services
+- Get the Repo and Test docker-compose to start Stack services
 ```
 git clone git@wwwin-github.cisco.com:DevNet/CLUS-Fastlane-Demo.git
 cd CLUS-Fastlane-Demo
 docker-compose up -d
 ```
 
-- Go to http://0.0.0.0:5000 for the demo
-
-
 - Install T-shark: https://www.wireshark.org/download.html
 (installing wireshark should automatically install tshark)
 
+## Run
+
+- Run Stack services
+```
+cd CLUS-Fastlane-Demo
+docker-compose up -d
+```
+
 - Run tshark to generate traffic
+
+Open a new tab, and run the tshark command to start the network capture. You can optionally provide the ```ip``` option to capture from a particular IP address.
+
 ```
 tshark -a duration:500 -i en0 -e frame.number -e wlan.qos -e wlan.qos.priority -e ip.src -e ip.dst -e ip.dsfield.dscp -e ip.len -Tek > /tmp/tshark/data/logs.data
 ```
 
+- Go to http://0.0.0.0:5000 for the demo
+
+**Tip: Refresh the Page once every 1-5 mins, to clear out the cache and to bring in the real-time nature for visulizations.**
 
 ## Debug
 
@@ -44,7 +55,7 @@ docker-compose up -d
   - Index: "fastlane"
   - docType: "log"
 
-## Comcept
+## Concept
 
 
 - EL API to get new entries
