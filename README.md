@@ -23,6 +23,8 @@ docker-compose up -d
 
 ## Run
 
+There are 3 elements that you want to run for the demo: docker-compose, tshark and browser (visualization)
+
 - Run Stack services
 ```
 cd CLUS-Fastlane-Demo
@@ -38,6 +40,8 @@ Open a new tab, and run the tshark command to start the network capture. You can
 ```
 tshark -a duration:500 -i en0 -e frame.number -e wlan.qos -e wlan.qos.priority -e ip.src -e ip.dst -e ip.dsfield.dscp -e ip.len -Tek > /tmp/tshark/data/logs.data
 ```
+
+Note: This will run tshark and do a packet capture for 500s. For the demo scenario, you can start the tshark just before every demo and then stop if after that. This will also help to keep the network dump small.
 
 - Go to http://0.0.0.0:5000 for the demo
 
