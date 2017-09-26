@@ -28,7 +28,8 @@ There are 3 elements that you want to run for the demo: docker-compose, tshark a
 - Run Stack services
 ```
 cd CLUS-Fastlane-Demo
-docker-compose up -d
+docker-compose down //Stop previously running instances.
+docker-compose up -d //Start a new one
 ```
 
 **Tip: If you keep the system up for long, it might get slower because of huge amount of packet data. Restart the docker-compose once every 30mins - 1 hour for best experience.**
