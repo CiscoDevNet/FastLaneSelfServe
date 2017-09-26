@@ -48,7 +48,7 @@ tshark -a duration:500 -i en0 -e frame.number -e wlan.qos -e wlan.qos.priority -
 
 Note: This will run tshark and do a packet capture for 500s. For the demo scenario, you can start the tshark just before every demo and then stop if after that. This will also help to keep the network dump small.
 
-- Go to http://0.0.0.0:5000 for the demo
+- Go to http://0.0.0.0:5000 for the real-time demo, http://0.0.0.0:5000/demo for fake-data demo
 
 **Tip: Refresh the Page once every 1-5 mins, to clear out the cache and to bring in the real-time nature for visulizations.**
 
