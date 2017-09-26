@@ -3,7 +3,11 @@
 ## Setup (mac-osx)
 
 - Install Docker : https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac
-- Install Docker-compose : https://docs.docker.com/compose/install/
+
+Make sure both docker and docker-compose is up and running.
+```
+$ docker-compose version
+```
 
 - Create log directory for tshark
 ```
