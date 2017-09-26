@@ -52,6 +52,15 @@ Note: This will run tshark and do a packet capture for 500s. For the demo scenar
 
 **Tip: Refresh the Page once every 1-5 mins, to clear out the cache and to bring in the real-time nature for visulizations.**
 
+## Update (To Latest Version)
+
+```
+cd CLUS-Fastlane-Demo
+docker-compose down
+docker-compose pull
+docker-compose up -d
+```
+
 ## Debug
 
 - To restart, please run
