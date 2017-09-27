@@ -25,13 +25,15 @@ services:
       - "5000:5000"
     depends_on:
       - elasticsearch
+    environment:
+      - ELASTICSEARCH_ENDPOINT=elasticsearch:9200
 
   filebeat:
     build: filebeat/
     volumes:
       - ./filebeat/config/filebeat.yml:/usr/share/filebeat/config/filebeat.yml
       - ./filebeat/config/fastlane_elastic.template.json:/usr/share/filebeat/config/fastlane_elastic.template.json
-      - /tmp/tshark/data/logs.data:/usr/share/filebeat/data/logs.data
+      - /tmp/tshark/data/:/usr/share/filebeat/data/
     environment:
       - ELHOST=elasticsearch:9200
       - FILEPATH=/usr/share/filebeat/data/logs.data
