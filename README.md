@@ -11,7 +11,7 @@ $ docker-compose version
 
 - Create log directory for tshark
 ```
-mkdir /tmp/tshark/data
+mkdir -p /tmp/tshark/data
 touch /tmp/tshark/data/logs.data
 ```
 
