@@ -1,4 +1,4 @@
-# CLUS Fastlane Demo
+# Fast Lane Visualizer
 
 ## Setup (mac-osx)
 
