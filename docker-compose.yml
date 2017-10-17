@@ -20,7 +20,7 @@ services:
       - elasticsearch
 
   visualizer:
-    image: containers.cisco.com/cloudification/fastlane-visualizer:deploy
+    image: devnetinnovation/fastlane-visualizer:latest
     ports:
       - "5000:5000"
     depends_on:
