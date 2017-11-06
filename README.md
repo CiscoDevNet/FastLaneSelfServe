@@ -17,8 +17,8 @@ touch /tmp/tshark/data/logs.data
 
 - Get the Repo and Test docker-compose to start Stack services
 ```
-git clone git@wwwin-github.cisco.com:DevNet/CLUS-Fastlane-Demo.git
-cd CLUS-Fastlane-Demo
+git clone https://github.com/CiscoDevNet/FastLaneSelfServe.git
+cd FastLaneSelfServe
 docker-compose up -d
 ```
 
