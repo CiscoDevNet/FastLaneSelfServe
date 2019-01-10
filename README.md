@@ -31,8 +31,8 @@ There are 3 elements that you want to run for the demo: docker-compose, tshark a
 
 - Run Stack services
 ```
-cd CLUS-Fastlane-Demo
-docker-compose down //Stop previously running instances.
+cd FastLaneSelfServe //omit if pwd is already /FastLaneSelfServe
+docker-compose down  //Stop previously running instances.
 docker-compose up -d //Start a new one
 ```
 
@@ -55,7 +55,7 @@ Note: This will run tshark and do a packet capture for 500s. For the demo scenar
 ## Update (To Latest Version)
 
 ```
-cd CLUS-Fastlane-Demo
+cd FastLaneSelfServe //omit if pwd is already /FastLaneSelfServe
 docker-compose down
 docker-compose pull
 docker-compose up -d
