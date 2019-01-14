@@ -20,7 +20,7 @@ services:
       - elasticsearch
 
   visualizer:
-    image: devnetinnovation/fastlane-visualizer:latest
+    image: ailuropoda/fastlane-visualizer:latest
     ports:
       - "5000:5000"
     depends_on:
