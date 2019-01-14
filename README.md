@@ -46,6 +46,16 @@ Open a new tab, and run the tshark command to start the network capture. You can
 tshark -a duration:500 -i en0 -e frame.number -e wlan.qos -e wlan.qos.priority -e ip.src -e ip.dst -e ip.dsfield.dscp -e ip.len -Tek > /tmp/tshark/data/logs.data
 ```
 
+You can apply a filter by adding ```-Y``` or ```-f``` option to the tshark command.
+For example,
+```
+-Y "ip.src == 10.10.30.101 && ip.dst == 10.10.30.102"
+```
+or
+```
+-f "host 10.10.30.101"
+```
+
 Note: This will run tshark and do a packet capture for 500s. For the demo scenario, you can start the tshark just before every demo and then stop if after that. This will also help to keep the network dump small.
 
 - Go to http://0.0.0.0:5000 for the real-time demo, http://0.0.0.0:5000/demo for fake-data demo
