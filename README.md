@@ -1,5 +1,27 @@
 # Fast Lane Visualizer
 
+This application visualizes the network traffic in near realtime. The network traffic here is the Fast Lane traffic that is marked by the iOS app.
+
+There are 3 components to this project:
+- Host side: Wireshark - It utilizes the wireshark (tshark) to capture Wi-Fi traffic in the network on the host machine and storing the packet in the logfile directory
+- Docker image for ELK stack, which reads the packets from the shared path and punts the data to the Elastic search. 
+- Visualization App: This application queries Elastic and renders the data into a nice visual
+
+
+## Introduction to Fast Lane
+Fastlane allows applications on iOS devices which are connected to Cisco Wi-Fi Access points to prioritize their traffic; Such prioritization allows the apps to deliver best experience in the enterprises.
+
+App traffic on Wi-Fi networks can be broadly classified as: Voice, Video, Best Effort and Background. Double clicking on each of the traffic types: 
+
+•	Voice: This is interactive voice for apps using Wi-Fi Calling (CallKit), Cisco Spark, Facetime or any other Voice app.
+
+ 
+•	Video: This is video traffic using Wi-Fi Calling (CallKit), Cisco Spark, Facetime or video capabilities within the app.
+
+•	Best Effort: Examples of data include instant messaging, VPN tunneling, audio/video streaming, signaling, screen sharing etc. 
+
+•	Background: These apps include photo/media uploads or backups. 
+
 ## Setup (mac-osx)
 
 - Install Docker : https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac
@@ -103,3 +125,6 @@ curl -XGET 'localhost:9200/fastlane/log/_search?_source=json.layers.ip_dsfield_d
 }'
 
 ```
+
+## Special Thanks !
+This code is built on top of https://github.com/deviantony/docker-elk
